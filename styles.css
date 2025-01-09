@@ -1,0 +1,111 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #f4f4f4;
+}
+
+#container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#countdown div {
+    text-align: center;
+}
+
+#name-reveal {
+    display: none;
+    margin-top: 20px;
+    opacity: 0; /* Ensure it's initially hidden */
+    transition: opacity 1s ease-in-out; /* Smooth transition for reveal */
+}
+
+#name-reveal.show {
+    display: block; /* Make it visible */
+    opacity: 1; /* Fade in */
+}
+
+#baby-name {
+    font-size: 30px;
+    color: #ff4081;
+    margin: 10px 0;
+}
+
+#popper {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    background-image: url('https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg'); /* Example popper image */
+    background-size: cover;
+    display: none;
+    animation-name: pop;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #countdown {
+        font-size: 18px;
+    }
+
+    #baby-name {
+        font-size: 24px;
+    }
+
+    #popper {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    #countdown {
+        font-size: 16px;
+    }
+
+    #baby-name {
+        font-size: 20px;
+    }
+
+    #popper {
+        width: 60px;
+        height: 60px;
+    }
+}
