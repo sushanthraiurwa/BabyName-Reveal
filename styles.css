@@ -1,39 +1,70 @@
+/* General Styling */
 body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; 
-    background-color: #f4f4f4;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
 }
 
-#container {
+header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main#container {
     text-align: center;
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    width: 90%;
 }
 
-h1, h2 {
+ h2 {
     color: #333;
     margin-bottom: 20px;
 }
 
+h1 {
+    color: #ff4081;
+    margin-bottom: 20px;
+}
+
+/* Countdown Styling */
 #countdown {
     display: flex;
+    flex-wrap: wrap; /* Makes it wrap on smaller screens */
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 #countdown div {
-    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    width: 80px; /* Equal width for all blocks */
 }
 
+#countdown span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff4081;
+}
+
+/* Name Reveal Section */
 #name-reveal {
     display: none;
     margin-top: 20px;
@@ -52,34 +83,68 @@ h1, h2 {
     margin: 10px 0;
 }
 
+/* Popper Styling */
 #popper {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin: 20px auto;
-    background-image: url('https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg'); /* Example popper image */
+    background-image: url('https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg');
     background-size: cover;
     display: none;
-    animation-name: pop;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    opacity: 0;
+    border-radius: 50%;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Pop Animation */
 @keyframes pop {
     0% {
         transform: scale(0);
         opacity: 1;
     }
     100% {
-        transform: scale(1.5);
-        opacity: 0;
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
-.hidden {
-    display: none;
+/* Confetti Styling */
+#confetti-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    overflow: hidden;
 }
 
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%;
+    animation: fall 2s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Confetti Colors */
+.confetti:nth-child(odd) {
+    background: #ff4081;
+}
+.confetti:nth-child(even) {
+    background: #4caf50;
+}
+
+/* Responsive Styling */
 @media (max-width: 768px) {
     #countdown {
         font-size: 18px;
@@ -90,14 +155,14 @@ h1, h2 {
     }
 
     #popper {
-        width: 80px;
-        height: 80px;
+        width: 120px;
+        height: 120px;
     }
 }
 
 @media (max-width: 480px) {
-    #countdown {
-        font-size: 16px;
+    #countdown div {
+        width: 100%;
     }
 
     #baby-name {
@@ -105,7 +170,7 @@ h1, h2 {
     }
 
     #popper {
-        width: 60px;
-        height: 60px;
+        width: 100px;
+        height: 100px;
     }
 }
