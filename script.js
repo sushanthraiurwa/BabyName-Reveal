@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Set the target date and time
-    const targetDate = new Date("2025-01-18T19:30:00");
+    const targetDate = new Date("2025-01-19T17:00:00");
     const countdownContainer = document.getElementById("countdown");
     const nameRevealContainer = document.getElementById("name-reveal");
     const babyNameElement = document.getElementById("baby-name");
@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
         const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60)) / (1000 * 60));
+       // const minutes = Math.floor((difference % (1000 * 60)) / (1000 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)); // Get minutes from remaining time
+
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
         document.getElementById("days").textContent = days.toString().padStart(2, "0");
@@ -31,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Reveal the name with animation
     const revealName = () => {
         nameRevealContainer.classList.add("show"); // Show name reveal
-        babyNameElement.textContent = "YUVIN"; // Replace with the actual name
+        babyNameElement.textContent = "YUVIN M SHETTY"; // Replace with the actual name
         triggerPopperAnimation(); // Launch the popper animation
     };
 
@@ -77,3 +79,30 @@ document.addEventListener("DOMContentLoaded", () => {
         updateCountdown();
     }
 });
+
+
+
+let slideIndex = 0;
+
+function moveSlide(n) {
+    const slides = document.querySelectorAll('.carousel-item');
+    slideIndex += n;
+    if (slideIndex < 0) {
+        slideIndex = slides.length - 1;
+    } else if (slideIndex >= slides.length) {
+        slideIndex = 0;
+    }
+    updateSlidePosition();
+}
+
+function updateSlidePosition() {
+    const slides = document.querySelector('.carousel');
+    const slideWidth = document.querySelector('.carousel-item').clientWidth + 20; // Adding the 10% margin on both sides
+    slides.style.transform = `translateX(${-slideIndex * slideWidth}px)`;
+}
+
+
+// Optional: Auto slide every 5 seconds
+setInterval(() => {
+    moveSlide(1);
+}, 5000);

@@ -88,7 +88,7 @@ h1 {
     width: 150px;
     height: 150px;
     margin: 20px auto;
-    background-image: url('https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg');
+    background-image: url('baby.jpg');
     background-size: cover;
     display: none;
     border-radius: 50%;
@@ -173,4 +173,133 @@ h1 {
         width: 100px;
         height: 100px;
     }
+}
+
+
+/* Photo Gallery Section */
+#photo-gallery {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#photo-gallery h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navigation Buttons */
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #photo-gallery h2 {
+        font-size: 1.5rem;
+    }
+
+    .carousel-container {
+        max-width: 100%;
+    }
+}
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    width: 90%; /* Take 90% of the screen width */
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden; /* Hide the part of the image that's outside the container */
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Carousel Item */
+/* Carousel Item */
+.carousel-item {
+    flex: 0 0 80%; /* Each image takes up 80% of the container width */
+    margin: 0 10%; /* Space for the previous and next images to show 10% */
+    box-sizing: border-box;
+}
+
+/* Image Styling */
+.carousel-item img {
+    width: 100%; /* Ensure the image scales to the width of the item */
+    height: 300px; /* Set a default height for all images */
+    object-fit: cover; /* This ensures the image covers the entire space without distortion */
+    display: block;
+}
+
+
+/* Navigation Buttons */
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
 }
