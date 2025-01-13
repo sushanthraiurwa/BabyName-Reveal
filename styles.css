@@ -30,7 +30,7 @@ main#container {
     width: 90%;
 }
 
- h2 {
+h2 {
     color: #333;
     margin-bottom: 20px;
 }
@@ -43,7 +43,7 @@ h1 {
 /* Countdown Styling */
 #countdown {
     display: flex;
-    flex-wrap: wrap; /* Makes it wrap on smaller screens */
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
     font-size: 20px;
@@ -53,9 +53,9 @@ h1 {
 
 #countdown div {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column;
     align-items: center;
-    width: 80px; /* Equal width for all blocks */
+    width: 80px;
 }
 
 #countdown span {
@@ -68,13 +68,13 @@ h1 {
 #name-reveal {
     display: none;
     margin-top: 20px;
-    opacity: 0; /* Ensure it's initially hidden */
-    transition: opacity 1s ease-in-out; /* Smooth transition for reveal */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 #name-reveal.show {
-    display: block; /* Make it visible */
-    opacity: 1; /* Fade in */
+    display: block;
+    opacity: 1;
 }
 
 #baby-name {
@@ -175,7 +175,6 @@ h1 {
     }
 }
 
-
 /* Photo Gallery Section */
 #photo-gallery {
     margin-top: 40px;
@@ -194,66 +193,9 @@ h1 {
     max-width: 800px;
     margin: 0 auto;
     overflow: hidden;
-}
-
-.carousel {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-    min-width: 100%;
-    box-sizing: border-box;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Navigation Buttons */
-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 100;
-}
-
-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.prev {
-    left: 0;
-}
-
-.next {
-    right: 0;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    #photo-gallery h2 {
-        font-size: 1.5rem;
-    }
-
-    .carousel-container {
-        max-width: 100%;
-    }
-}
-/* Carousel Container */
-.carousel-container {
-    position: relative;
-    width: 90%; /* Take 90% of the screen width */
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden; /* Hide the part of the image that's outside the container */
+    justify-content: center;
+    align-items: center;
 }
 
 /* Carousel */
@@ -263,21 +205,27 @@ button:hover {
 }
 
 /* Carousel Item */
-/* Carousel Item */
 .carousel-item {
-    flex: 0 0 80%; /* Each image takes up 80% of the container width */
-    margin: 0 10%; /* Space for the previous and next images to show 10% */
+    flex: 0 0 60%; /* Main item occupies 60% of the container */
+    margin: 0 5%; /* Add space between items */
     box-sizing: border-box;
+    transition: transform 0.3s ease, opacity 0.3s ease;   
+    transform: scale(0.8); /* Shrink non-active items */
+    opacity: 1; /* Reduce opacity for non-active items */
+}
+
+.carousel-item.active {
+    transform: scale(1); /* Full size for the active item */
+    opacity: 1; /* Full opacity for the active item */
 }
 
 /* Image Styling */
 .carousel-item img {
-    width: 100%; /* Ensure the image scales to the width of the item */
-    height: 300px; /* Set a default height for all images */
-    object-fit: cover; /* This ensures the image covers the entire space without distortion */
-    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
 
 /* Navigation Buttons */
 button {
@@ -290,6 +238,8 @@ button {
     padding: 10px;
     cursor: pointer;
     z-index: 100;
+    border-radius: 50%;
+    font-size: 16px;
 }
 
 button:hover {
@@ -297,9 +247,24 @@ button:hover {
 }
 
 .prev {
-    left: 0;
+    left: 10px;
 }
 
 .next {
-    right: 0;
+    right: 10px;
+}
+
+/* Responsive Carousel */
+@media (max-width: 768px) {
+    .carousel-item {
+        flex: 0 0 70%;
+        margin: 0 3%;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item {
+        flex: 0 0 80%;
+        margin: 0 2%;
+    }
 }

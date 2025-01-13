@@ -19,9 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
         const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-       // const minutes = Math.floor((difference % (1000 * 60)) / (1000 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)); // Get minutes from remaining time
-
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
         document.getElementById("days").textContent = days.toString().padStart(2, "0");
@@ -78,31 +76,39 @@ document.addEventListener("DOMContentLoaded", () => {
         const countdownInterval = setInterval(updateCountdown, 1000);
         updateCountdown();
     }
-});
 
+    // Carousel Functionality
+    let slideIndex = 0;
 
-
-let slideIndex = 0;
-
-function moveSlide(n) {
-    const slides = document.querySelectorAll('.carousel-item');
-    slideIndex += n;
-    if (slideIndex < 0) {
-        slideIndex = slides.length - 1;
-    } else if (slideIndex >= slides.length) {
-        slideIndex = 0;
+    function moveSlide(n) {
+        const slides = document.querySelectorAll('.carousel-item');
+        slideIndex += n;
+        if (slideIndex < 0) {
+            slideIndex = slides.length - 1;
+        } else if (slideIndex >= slides.length) {
+            slideIndex = 0;
+        }
+        updateSlidePosition();
     }
-    updateSlidePosition();
-}
 
-function updateSlidePosition() {
-    const slides = document.querySelector('.carousel');
-    const slideWidth = document.querySelector('.carousel-item').clientWidth + 20; // Adding the 10% margin on both sides
-    slides.style.transform = `translateX(${-slideIndex * slideWidth}px)`;
-}
+    function updateSlidePosition() {
+        const slides = document.querySelector('.carousel');
+        const slideWidth = document.querySelector('.carousel-item').clientWidth;
+        const margin = 20; // Margin for partial visibility
+        slides.style.transform = `translateX(calc(${-slideIndex * (slideWidth + margin)}px + 10%))`;
+    }
 
+    // Attach event listeners for navigation buttons
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
 
-// Optional: Auto slide every 5 seconds
-setInterval(() => {
-    moveSlide(1);
-}, 5000);
+    if (prevButton && nextButton) {
+        prevButton.addEventListener('click', () => moveSlide(-1));
+        nextButton.addEventListener('click', () => moveSlide(1));
+    }
+
+    // Optional: Auto slide every 5 seconds
+    setInterval(() => {
+        moveSlide(1);
+    }, 5000);
+});
